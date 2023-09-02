@@ -37,44 +37,14 @@ echo -e "Patches Path: ${patchDir}"
 
 echo -e "${color}Applying patches !${end}"
 
-# Patch bootanimation lag
-rm -rf frameworks/native/libs/renderengine/threaded/RenderEngineThreaded.cpp
+# Media: Import codecs/omx changes from t-alps-q0.mp1-V9.122.1
+git -C "frameworks/av" am <<<"$(curl -sL "https://github.com/ArrowOS/android_frameworks_av/commit/1fb1c48309cf01deb9e3f8253cb7fa5961c25595.patch")"
 
-cp ${patchDir}/frameworks/native/libs/renderengine/threaded/RenderEngineThreaded.cpp frameworks/native/libs/renderengine/threaded/
+# stagefright: remove HW_TEXTRUE usage from SurfaceMediaSource
+git -C "frameworks/av" am <<<"$(curl -sL "https://github.com/ArrowOS/android_frameworks_av/commit/a727c1f68fd30c8e6a4068db9dc26670d4a78f6c.patch")"
 
-# Patch media codec issues
-echo -e "Applying Media Codec patches!"
-rm -rf frameworks/av/include/media/MediaExtractorPluginHelper.h
-rm -rf frameworks/av/media/libmediaplayerservice/nuplayer/include/nuplayer/GenericSource.h
-rm -rf frameworks/av/media/libmediaplayerservice/nuplayer/include/nuplayer/NuPlayerSource.h
-rm -rf frameworks/av/media/libmediaplayerservice/nuplayer/GenericSource.cpp
-rm -rf frameworks/av/media/libmediaplayerservice/nuplayer/NuPlayerDecoder.cpp
-rm -rf frameworks/av/media/libstagefright/include/media/stagefright/ACodec.h
-rm -rf frameworks/av/media/libstagefright/include/media/stagefright/MediaCodecSource.h
-rm -rf frameworks/av/media/libstagefright/ACodec.cpp
-rm -rf frameworks/av/media/libstagefright/MediaCodecSource.cpp
-rm -rf frameworks/av/media/libstagefright/omx/OMXNodeInstance.cpp
-rm -rf frameworks/av/media/libstagefright/omx/SimpleSoftOMXComponent.cpp
-rm -rf frameworks/av/media/mediaserver/mediaserver.rc
-rm -rf frameworks/av/media/extractors/ogg/OggExtractor.cpp
-rm -rf frameworks/av/services/mediacodec/seccomp_policy/mediaswcodec-arm.policy
-rm -rf frameworks/av/services/mediaextractor/mediaextractor.rc
-
-cp ${patchDir}/frameworks/av/include/media/MediaExtractorPluginHelper.h frameworks/av/include/media/
-cp ${patchDir}/frameworks/av/media/libmediaplayerservice/nuplayer/include/nuplayer/GenericSource.h frameworks/av/media/libmediaplayerservice/nuplayer/include/nuplayer/
-cp ${patchDir}/frameworks/av/media/libmediaplayerservice/nuplayer/include/nuplayer/NuPlayerSource.h frameworks/av/media/libmediaplayerservice/nuplayer/include/nuplayer/
-cp ${patchDir}/frameworks/av/media/libmediaplayerservice/nuplayer/GenericSource.cpp frameworks/av/media/libmediaplayerservice/nuplayer/
-cp ${patchDir}/frameworks/av/media/libmediaplayerservice/nuplayer/NuPlayerDecoder.cpp frameworks/av/media/libmediaplayerservice/nuplayer/
-cp ${patchDir}/frameworks/av/media/libstagefright/include/media/stagefright/ACodec.h frameworks/av/media/libstagefright/include/media/stagefright/
-cp ${patchDir}/frameworks/av/media/libstagefright/include/media/stagefright/MediaCodecSource.h frameworks/av/media/libstagefright/include/media/stagefright/
-cp ${patchDir}/frameworks/av/media/libstagefright/ACodec.cpp frameworks/av/media/libstagefright/
-cp ${patchDir}/frameworks/av/media/libstagefright/MediaCodecSource.cpp frameworks/av/media/libstagefright/
-cp ${patchDir}/frameworks/av/media/libstagefright/omx/OMXNodeInstance.cpp frameworks/av/media/libstagefright/omx/
-cp ${patchDir}/frameworks/av/media/libstagefright/omx/SimpleSoftOMXComponent.cpp frameworks/av/media/libstagefright/omx/
-cp ${patchDir}/frameworks/av/media/mediaserver/mediaserver.rc frameworks/av/media/mediaserver/
-cp ${patchDir}/frameworks/av/media/extractors/ogg/OggExtractor.cpp frameworks/av/media/extractors/ogg/
-cp ${patchDir}/frameworks/av/services/mediacodec/seccomp_policy/mediaswcodec-arm.policy frameworks/av/services/mediacodec/seccomp_policy/
-cp ${patchDir}/frameworks/av/services/mediaextractor/mediaextractor.rc frameworks/av/services/mediaextractor/
+# REThreaded: Use gen- and delete- textures on all render engines
+git -C "frameworks/native" am <<<"$(curl -sL "https://github.com/ArrowOS/android_frameworks_native/commit/1e483eea5cf3b4972939a313652aebac42a1561c.patch")"
 
 echo -e "${color}Patch applied successfully!${end}"
 # Navigate to the kernel directory
