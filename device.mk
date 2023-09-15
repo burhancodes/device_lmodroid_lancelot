@@ -484,3 +484,8 @@ endif
 PRODUCT_PRODUCT_PROPERTIES += \
     lmodroid.updater.uri=https://raw.githubusercontent.com/burhancodes/OTA/main/lancelot.json
 
+# Lineage Health
+ifneq ($(wildcard hardware/*/interfaces/health),)
+PRODUCT_PACKAGES += \
+    vendor.lineage.health-service.default
+endif
