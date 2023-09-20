@@ -168,9 +168,10 @@ PRODUCT_COPY_FILES += \
     $(RECOVERY_TS_FW_PATH)/nvt_tm_fw.bin:recovery/root/vendor/firmware/nvt_tm_fw.bin \
     $(RECOVERY_TS_FW_PATH)/nvt_tm_mp.bin:recovery/root/vendor/firmware/nvt_tm_mp.bin
 
-# FM Radio
-PRODUCT_PACKAGES += \
-    FMRadio
+PRODUCT_COPY_FILES += \
+    $(RECOVERY_TS_FW_PATH)/novatek_ts_fw.bin:recovery/root/vendor/firmware/novatek_ts_fw.bin \
+    $(RECOVERY_TS_FW_PATH)/novatek_ts_mp.bin:recovery/root/vendor/firmware/novatek_ts_mp.bin \
+    $(RECOVERY_TS_FW_PATH)/focaltech_ts_fw_xinli.bin:recovery/root/vendor/firmware/focaltech_ts_fw_xinli.bin
 
 # Gatekeeper
 PRODUCT_PACKAGES += \
