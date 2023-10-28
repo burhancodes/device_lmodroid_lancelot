@@ -281,7 +281,8 @@ PRODUCT_PACKAGES += \
     SystemUIOverlayLancelot \
     TelephonyOverlayLancelot \
     TetheringConfigOverlayLancelot \
-    WifiOverlayLancelot
+    WifiOverlayLancelot \
+    UpdaterOverlayLancelot
 
 # Power
 PRODUCT_PACKAGES += \
@@ -466,3 +467,20 @@ $(call inherit-product, vendor/xiaomi/lancelot/lancelot-vendor.mk)
 # Debloat Packages
 PRODUCT_PACKAGES += \
     Debloater
+
+# Google Camera
+ifneq ($(wildcard packages/apps/GoogleCamera_8.1),)
+PRODUCT_PACKAGES += \
+    GoogleCamera8.1
+endif
+
+# Custom Package Installer
+ifneq ($(wildcard packages/apps/CustomPackageInstaller),)
+PRODUCT_PACKAGES += \
+    CustomPackageInstaller
+endif
+
+# Updater
+PRODUCT_PRODUCT_PROPERTIES += \
+    lmodroid.updater.uri=https://raw.githubusercontent.com/burhancodes/OTA/main/lancelot.json
+
