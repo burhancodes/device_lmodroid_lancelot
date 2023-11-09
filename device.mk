@@ -480,6 +480,30 @@ PRODUCT_PACKAGES += \
     CustomPackageInstaller
 endif
 
+# MotoWidgets
+ifneq ($(wildcard packages/apps/MyUIWidgets),)
+PRODUCT_PACKAGES += \
+    MyUIWidgets
+endif
+
+# MotoClock
+ifneq ($(wildcard packages/apps/MotoClock),)
+PRODUCT_PACKAGES += \
+    MotoClock
+endif
+
+# MotoCalendar
+ifneq ($(wildcard packages/apps/MotoCalendar),)
+PRODUCT_PACKAGES += \
+    MotoCalendar
+endif
+
+# MiCalculator
+ifneq ($(wildcard packages/apps/MiCalculator),)
+PRODUCT_PACKAGES += \
+    MiCalculator
+endif
+
 # Updater
 PRODUCT_PRODUCT_PROPERTIES += \
     lmodroid.updater.uri=https://raw.githubusercontent.com/burhancodes/OTA/main/lancelot.json

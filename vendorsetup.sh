@@ -12,6 +12,12 @@ export TARGET_KERNEL_BUILD_HOST=burhancodes
 echo -e "${color}Cloning dependencies...${end}"
 #motowidgets
 git clone --depth 1 https://github.com/burhancodes/package_apps_MyUIWidgets packages/apps/MyUIWidgets
+#motoclock
+git clone --depth 1 https://github.com/burhancodes/package_apps_MotoClock packages/apps/MotoClock
+#motocalendar
+git clone --depth 1 https://github.com/burhancodes/packages_apps_MotoCalendar packages/apps/MotoCalendar
+#micalculator
+git clone --depth 1 https://github.com/burhancodes/package_apps_micalculator packages/apps/MiCalculator
 #GoogleCamera
 git clone --depth 1 https://github.com/burhancodes/packages_apps_GoogleCamera_8.1 packages/apps/GoogleCamera_8.1
 # custom installer
@@ -42,9 +48,6 @@ git -C "frameworks/av" am <<<"$(curl -sL "https://github.com/ArrowOS/android_fra
 
 # stagefright: remove HW_TEXTRUE usage from SurfaceMediaSource
 git -C "frameworks/av" am <<<"$(curl -sL "https://github.com/ArrowOS/android_frameworks_av/commit/a727c1f68fd30c8e6a4068db9dc26670d4a78f6c.patch")"
-
-# REThreaded: Use gen- and delete- textures on all render engines
-git -C "frameworks/native" am <<<"$(curl -sL "https://github.com/ArrowOS/android_frameworks_native/commit/1e483eea5cf3b4972939a313652aebac42a1561c.patch")"
 
 echo -e "${color}Patch applied successfully!${end}"
 # Navigate to the kernel directory
