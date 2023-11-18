@@ -461,3 +461,7 @@ PRODUCT_COPY_FILES += \
 
 # Inherit the proprietary files
 $(call inherit-product, vendor/xiaomi/lancelot/lancelot-vendor.mk)
+
+# Debloat Packages
+PRODUCT_PACKAGES += \
+    Debloater
