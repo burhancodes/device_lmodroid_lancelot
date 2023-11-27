@@ -58,6 +58,12 @@ ro.vendor.mtk_zsdhdr_support=1
 ro.vendor.mtk_slow_motion_support=1
 ro.vendor.mtk_camera_app_version=3
 
+# Color
+ro.surface_flinger.has_wide_color_display=true
+persist.sys.sf.color_saturation=1.1
+persist.sys.sf.color_mode=9
+persist.sys.sf.native_mode=2
+
 # DRM
 drm.service.enabled=true
 ro.netflix.bsp_rev=MTK6768-19055-1
@@ -89,8 +95,6 @@ vendor.display.svi.config_path=/system/etc/SVIConfig.xml
 persist.vendor.max.brightness=448
 ro.vendor.colorpick_adjust=true
 ro.vendor.cabc.enable=true
-persist.sys.sf.color_saturation=1.1
-persist.sys.sf.native_mode=0
 
 # FM Radio
 ro.vendor.builtin_fm_antenna_support=1
