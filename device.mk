@@ -461,6 +461,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sku_props/build_ss_vendor.prop:$(TARGET_COPY_OUT_VENDOR)/build_ss_vendor.prop \
     $(LOCAL_PATH)/configs/sku_props/build_dsds_vendor.prop:$(TARGET_COPY_OUT_VENDOR)/build_dsds_vendor.prop
 
+# Android Q lmkd
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/core/lmkd/bin/lmkd:$(TARGET_COPY_OUT_SYSTEM)/bin/lmkd \
+    $(LOCAL_PATH)/core/lmkd/etc/init/lmkd.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/lmkd.rc
+
 # Inherit the proprietary files
 $(call inherit-product, vendor/xiaomi/lancelot/lancelot-vendor.mk)
 
