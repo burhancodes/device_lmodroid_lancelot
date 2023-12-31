@@ -558,7 +558,7 @@
         <item>0</item> <!-- COLOR_MODE_DEFAULT    -->
         <item>9</item> <!-- COLOR_MODE_DISPLAY_P3 -->
     </integer-array>
-    
+
  <!-- ComponentName of a dream to show whenever the system would otherwise have
              gone to sleep.  When the PowerManager is asked to go to sleep, it will instead
              try to start this dream if possible.  The dream should typically call startDozing()
@@ -580,4 +580,7 @@
          correctly use them when installed on your device.  Otherwise, keep this disabled
          so that applications can still use their own mechanisms. -->
     <bool name="config_enableAutoPowerModes">true</bool>
+
+    <!-- The max scale for the wallpaper when it's zoomed in -->
+    <item name="config_wallpaperMaxScale" format="float" type="dimen">1</item>
 </resources>
