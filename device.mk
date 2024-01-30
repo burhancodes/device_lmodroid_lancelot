@@ -434,6 +434,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.vibrator-service.mediatek
 
+# VNDK
+PRODUCT_COPY_FILES += \
+    prebuilts/vndk/v32/arm64/arch-arm64-armv8-a/shared/vndk-sp/libutils.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libutils-v32.so
+
 # Wi-Fi
 PRODUCT_PACKAGES += \
     android.hardware.wifi.supplicant@1.0.vendor \
