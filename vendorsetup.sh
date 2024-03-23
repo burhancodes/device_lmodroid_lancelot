@@ -19,17 +19,17 @@ git clone --depth 1 https://github.com/burhancodes/packages_apps_CustomPackageIn
 
 git clone --depth 1 https://github.com/burhancodes/vendor_lmodroid_lancelot vendor/xiaomi/lancelot
 
-git clone --depth 1 https://github.com/burhancodes/BlackSapphire kernel/xiaomi/mt6768
+git clone --depth 1 https://github.com/burhancodes/BlackSapphire -b 14 kernel/xiaomi/mt6768
 cd kernel/xiaomi/mt6768
 echo -e "${color}Patching Kernel for KernelSU...${end}"
 curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
 cd ../../..
 
 rm -rf device/mediatek/sepolicy_vndr
-git clone --depth 1 https://github.com/LineageOS/android_device_mediatek_sepolicy_vndr device/mediatek/sepolicy_vndr
+git clone --depth 1 https://github.com/Burhanverse/android_device_mediatek_sepolicy_vndr device/mediatek/sepolicy_vndr
 
 rm -rf hardware/mediatek
-git clone --depth 1 https://github.com/LineageOS/android_hardware_mediatek hardware/mediatek
+git clone --depth 1 https://github.com/Burhanverse/android_hardware_mediatek hardware/mediatek
 
 git clone --depth 1 https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r487747c prebuilts/clang/host/linux-x86/clang-r487747c
 
