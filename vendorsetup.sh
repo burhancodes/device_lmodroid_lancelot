@@ -1,10 +1,3 @@
-export KBUILD_BUILD_USER=Burhanverse
-export KBUILD_BUILD_HOST=burhancodes
-export BUILD_USERNAME=Burhanverse
-export BUILD_HOSTNAME=burhancodes
-export TARGET_KERNEL_BUILD_USER=Burhanverse
-export TARGET_KERNEL_BUILD_HOST=burhancodes
-
 git clone --depth 1 https://github.com/burhancodes/package_apps_MyUIWidgets packages/apps/MyUIWidgets
 
 git clone --depth 1 https://github.com/burhancodes/package_apps_MotoClock packages/apps/MotoClock
@@ -21,7 +14,6 @@ git clone --depth 1 https://github.com/burhancodes/vendor_lmodroid_lancelot vend
 
 git clone --depth 1 https://github.com/burhancodes/BlackSapphire -b 14 kernel/xiaomi/mt6768
 cd kernel/xiaomi/mt6768
-echo -e "${color}Patching Kernel for KernelSU...${end}"
 curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
 cd ../../..
 
@@ -33,8 +25,6 @@ git clone --depth 1 https://github.com/Burhanverse/android_hardware_mediatek -b 
 
 git clone --depth 1 https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r487747c prebuilts/clang/host/linux-x86/clang-r487747c
 
-echo -e "Dependencies cloned successfully!"
-
 echo -e "Applying patches..."
 
 # Media: Import codecs/omx changes from t-alps-q0.mp1-V9.122.1
@@ -42,5 +32,11 @@ git -C "frameworks/av" am <<<"$(curl -sL "https://github.com/ArrowOS/android_fra
 
 # stagefright: remove HW_TEXTRUE usage from SurfaceMediaSource
 git -C "frameworks/av" am <<<"$(curl -sL "https://github.com/ArrowOS/android_frameworks_av/commit/a727c1f68fd30c8e6a4068db9dc26670d4a78f6c.patch")"
+
+# HACK: telephony: Conditionally force enable LTE_CA
+git -C "frameworks/av" am <<<"$(curl -sL "https://github.com/burhancodes/frameworks_base/commit/b497d0a812b8c8eb3e70157e3e037726d93e2e9f.patch")"
+
+# Settings: Add a toggle to force LTE_CA
+git -C "frameworks/av" am <<<"$(curl -sL "https://github.com/burhancodes/packages_apps_Settings/commit/d594556228a30dcdc2129028b6124d872df299d4.patch")"
 
 echo -e "Patch applied successfully."
