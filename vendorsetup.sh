@@ -26,10 +26,10 @@ curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh
 cd ../../..
 
 rm -rf device/mediatek/sepolicy_vndr
-git clone --depth 1 https://github.com/Burhanverse/android_device_mediatek_sepolicy_vndr device/mediatek/sepolicy_vndr
+git clone --depth 1 https://github.com/Burhanverse/android_device_mediatek_sepolicy_vndr -b lineage-20 device/mediatek/sepolicy_vndr
 
 rm -rf hardware/mediatek
-git clone --depth 1 https://github.com/Burhanverse/android_hardware_mediatek hardware/mediatek
+git clone --depth 1 https://github.com/Burhanverse/android_hardware_mediatek -b lineage-20 hardware/mediatek
 
 git clone --depth 1 https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r487747c prebuilts/clang/host/linux-x86/clang-r487747c
 
