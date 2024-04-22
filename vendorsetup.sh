@@ -17,20 +17,6 @@ cd kernel/xiaomi/mt6768
 curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
 cd ../../..
 
-rm -rf device/mediatek/sepolicy_vndr
-git clone --depth 1 https://github.com/Burhanverse/android_device_mediatek_sepolicy_vndr -b lineage-20 device/mediatek/sepolicy_vndr
-
-rm -rf hardware/mediatek
-git clone --depth 1 https://github.com/Burhanverse/android_hardware_mediatek -b lineage-20 hardware/mediatek
-
-# HACK: telephony: Conditionally force enable LTE_CA
-rm -rf frameworks/base
-git clone --depth 1 https://github.com/burhancodes/frameworks_base -b thirteen frameworks/base
-
-# Settings: Add a toggle to force LTE_CA
-rm -rf packages/apps/Settings
-git clone --depth 1 https://github.com/burhancodes/packages_apps_Settings -b thirteen packages/apps/Settings
-
 echo -e "Applying patches..."
 # Media: Import codecs/omx changes from t-alps-q0.mp1-V9.122.1
 git -C "frameworks/av" am <<<"$(curl -sL "https://github.com/ArrowOS/android_frameworks_av/commit/1fb1c48309cf01deb9e3f8253cb7fa5961c25595.patch")"
